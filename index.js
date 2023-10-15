@@ -17,11 +17,11 @@ const cors = require('cors')
 dotenv.config();
 app.use(express.json());
 
-// app.use(
-//     cors({
-//         origin :"https://hyphentech-blog.vercel.app"          
-//     })
-// )
+app.use(
+    cors({
+        origin :"https://hyphen-blog.vercel.app"          
+    })
+ )
 
 
 app.use("/images", express.static(path.join(__dirname, "/images")));
@@ -64,6 +64,10 @@ app.get("/images/:filename", (req, res) => {
 
 
 //routes
+app.get('/',(req,res)=>{
+    res.send('<h2>Backend is runnig</h2>')
+});
+
 
 app.use('/api/auth', authRoute);
 app.use('/api/authAdmin', authAdminRoute);
